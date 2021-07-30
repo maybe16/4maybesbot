@@ -1,0 +1,332 @@
+import requests
+
+import uuid
+
+from time import sleep
+
+uid = uuid.uuid4()
+
+r = requests.session()
+
+logo = """
+
+(----------------------)
+
+  BOT MADYE BY 
+
+      MR.MAYBE
+
+      INSTGRAM : 4MAYBES
+
+(----------------------)
+
+"""
+
+print(logo)
+
+username = input("Enter the username: ")
+
+password = input("Enter the password: ")
+
+target = input("Enter the target account: ")
+
+slp = int(input("Enter the sleep time: "))
+
+report_type = input("""
+
+ chose type of the repoprt
+
+  1-spam
+
+  2-Impersonation
+
+  3-drugs
+
+  4-Harassment or bullying
+
+  5-Violence or threat of violence
+
+  6-Nudity or pornography
+
+  7-Hate speech or symbols
+
+  8-self
+
+""")
+
+rnum = int(input(" Enter number of reports"))
+
+def login1():
+
+    url = 'https://www.instagram.com/accounts/login/ajax/'
+
+    data = {
+
+        'username': username,
+
+        'enc_password': '#PWD_INSTAGRAM_BROWSER:0:&:' + password
+
+    }
+
+    login = {
+
+        'accept': '*/*',
+
+        'accept-encoding': 'gzip, deflate, br',
+
+        'accept-language': 'ar',
+
+        'content-length': '274',
+
+        'content-type': 'application/x-www-form-urlencoded',
+
+        'cookie': 'ig_cb=2; ig_did=3B81495F-DE3E-4AB7-8283-82B66999549C; mid=YA3utAALAAE7jS_Gn_sn4gqB3Kf_; '
+
+                  'shbid=19846; shbts=1611526733.68058; rur=ATN; csrftoken=oh0bMlc5wbjazNMFwSeCISJ0L1so4Ryx; '
+
+                  'urlgen="{\"212.237.118.30\": 206206}:1l3nke:H2_zaJnSDUTMgifsOgfObyP4MTM" ',
+
+        'origin': 'https://www.instagram.com',
+
+        'referer': 'https://www.instagram.com/',
+
+        'sec-fetch-dest': 'empty',
+
+        'sec-fetch-mode': 'cors',
+
+        'sec-fetch-site': 'same-origin',
+
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
+
+                      'Chrome/87.0.4280.141 Safari/537.36',
+
+        'x-csrftoken': 'oh0bMlc5wbjazNMFwSeCISJ0L1so4Ryx',
+
+        'x-ig-app-id': '936619743392459',
+
+        'x-ig-www-claim': 'hmac.AR1ee2u7G4uJAP-D-0q-E3ZdsHFIwpQ3EYBdjJ9Em1BfD2s-',
+
+        'x-instagram-ajax': '4ce3bf208aca',
+
+        'x-requested-with': 'XMLHttpRequest'
+
+    }
+
+    lor = requests.post(url, data=data, headers=login)
+
+    if "userId" in lor.text:
+
+        print("lohined")
+
+        urlid = "https://www.instagram.com/{}/?__a=1".format(target)
+
+        loid = r.get(urlid).json()
+
+        userid = str(loid["logging_page_id"])
+
+        idd = userid.split('_')[1]
+
+        done = 1
+
+        if report_type == '1':
+
+            for i in range(rnum):
+
+                reurl = 'https://www.instagram.com/users/{}/report/'.format(idd)
+
+                data1 = {
+
+                    'source_name': '',
+
+                    'reason_id': 1,
+
+                    'frx_context': ''
+
+                }
+
+                r.post(reurl, data=data1)
+
+                print("report {} has done".format(done))
+
+                sleep(slp)
+
+                done += 1
+
+        elif report_type == '2':
+
+            for i in range(int(rnum)):
+
+                reurl = 'https://www.instagram.com/users/{}/report/'.format(idd)
+
+                data1 = {
+
+                    'source_name': '',
+
+                    'reason_id': 8,
+
+                    'frx_context': ''
+
+                }
+
+                r.post(reurl, data=data1)
+
+                print("report {} has done".format(done))
+
+                sleep(slp)
+
+                done += 1
+
+        elif report_type == '3':
+
+            for i in range(rnum):
+
+                reurl = 'https://www.instagram.com/users/{}/report/'.format(idd)
+
+                data1 = {
+
+                    'source_name': '',
+
+                    'reason_id': 3,
+
+                    'frx_context': ''
+
+                }
+
+                r.post(reurl, data=data1)
+
+                print("report {} has done".format(done))
+
+                sleep(slp)
+
+                done += 1
+
+        elif report_type == '4':
+
+            for i in range(rnum):
+
+                reurl = 'https://www.instagram.com/users/{}/report/'.format(idd)
+
+                data1 = {
+
+                    'source_name': '',
+
+                    'reason_id': 7,
+
+                    'frx_context': ''
+
+                }
+
+                r.post(reurl, data=data1)
+
+                print("report {} has done".format(done))
+
+                sleep(slp)
+
+                done += 1
+
+        elif report_type == '5':
+
+            for i in range(rnum):
+
+                reurl = 'https://www.instagram.com/users/{}/report/'.format(idd)
+
+                data1 = {
+
+                    'source_name': '',
+
+                    'reason_id': 5,
+
+                    'frx_context': ''
+
+                }
+
+                r.post(reurl, data=data1)
+
+                print("report {} has done".format(done))
+
+                sleep(slp)
+
+                done += 1
+
+        elif report_type == '6':
+
+            for i in range(rnum):
+
+                reurl = 'https://www.instagram.com/users/{}/report/'.format(idd)
+
+                data1 = {
+
+                    'source_name': '',
+
+                    'reason_id': 4,
+
+                    'frx_context': ''
+
+                }
+
+                r.post(reurl, data=data1)
+
+                print("report {} has done".format(done))
+
+                sleep(slp)
+
+                done += 1
+
+        elif report_type == '7':
+
+            for i in range(rnum):
+
+                reurl = 'https://www.instagram.com/users/{}/report/'.format(idd)
+
+                data1 = {
+
+                    'source_name': '',
+
+                    'reason_id': 6,
+
+                    'frx_context': ''
+
+                }
+
+                r.post(reurl, data=data1)
+
+                print("report {} has done".format(done))
+
+                sleep(slp)
+
+                done += 1
+
+        elif report_type == '8':
+
+            for i in range(rnum):
+
+                reurl = 'https://www.instagram.com/users/{}/report/'.format(idd)
+
+                data1 = {
+
+                    'source_name': '',
+
+                    'reason_id': 2,
+
+                    'frx_context': ''
+
+                }
+
+                r.post(reurl, data=data1)
+
+                print("report {} has done".format(done))
+
+                sleep(slp)
+
+                done += 1
+
+        else:
+
+            print(" wrong number")
+
+    else:
+
+        print("wrong username or password")
+
+login1()
+
